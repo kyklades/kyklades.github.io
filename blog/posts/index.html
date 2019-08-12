@@ -1,28 +1,19 @@
 ---
 layout: page
-title: Trip to Kyklades
-subtitle: ゆったりまったりつらつらと。
-use-site-title: true
-bigimg:
-  - "/img/delos-greece.jpg" : "Delos, Greece"
-  - "/img/25827711416_4fb8ef89f4_o.jpg" : "Mykonos, Greece"
-  - "/img/25762263531_5d4c639118_o.jpg" : "Yorkshire, England"
+title: Posts
 ---
 
-<h1 class="text-center">Recent Posts</h1>
-<div class="spacer"></div>
-
 <div class="posts-list">
-  {% for post in site.posts limit:3 %}
+  {% for post in paginator.posts %}
   <article class="post-preview">
     <a href="{{ post.url | relative_url }}">
-      <h2 class="post-title">{{ post.title }}</h2>
+	  <h2 class="post-title">{{ post.title }}</h2>
 
-      {% if post.subtitle %}
-      <h3 class="post-subtitle">
-        {{ post.subtitle }}
-      </h3>
-      {% endif %}
+	  {% if post.subtitle %}
+	  <h3 class="post-subtitle">
+	    {{ post.subtitle }}
+	  </h3>
+	  {% endif %}
     </a>
 
     <p class="post-meta">
@@ -63,8 +54,17 @@ bigimg:
   {% endfor %}
 </div>
 
+{% if paginator.total_pages > 1 %}
 <ul class="pager main-pager">
-  <li>
-    <a href="{{ '/blog/posts' | relative_url }}">See More</a>
+  {% if paginator.previous_page %}
+  <li class="previous">
+    <a href="{{ paginator.previous_page_path | relative_url }}">&larr; Newer Posts</a>
   </li>
+  {% endif %}
+  {% if paginator.next_page %}
+  <li class="next">
+    <a href="{{ paginator.next_page_path | relative_url }}">Older Posts &rarr;</a>
+  </li>
+  {% endif %}
 </ul>
+{% endif %}

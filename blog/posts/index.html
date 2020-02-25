@@ -16,9 +16,17 @@ title: Posts
 	  {% endif %}
     </a>
 
-    <p class="post-meta">
-      Posted on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
+    <div class="posted-updated-date-container">
+      <p class="post-meta">
+        Posted on {{ post.date | date: "%B %-d, %Y" }}
+      </p>
+      {% if page.last_modified_at %}
+      <div class="divider">/</div>
+      <p class="post-meta">
+        Updated on {{ page.last_modified_at | date: "%B %-d, %Y" }}
+      </p>
+      {% endif %}
+    </div>
 
     <div class="post-entry-container">
       {% if post.image %}

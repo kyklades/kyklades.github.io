@@ -35,8 +35,14 @@
 			{% endif %}
 		  {% endif %}
 		  
-		  {% if include.type == "post" %}
-		  <span class="post-meta">Posted on {{ page.date | date: "%B %-d, %Y" }}</span>
+      {% if include.type == "post" %}
+      <div class="posted-updated-date-container">
+        <span class="post-meta">Posted on {{ page.date | date: "%B %-d, %Y" }}</span>
+        {% if page.last_modified_at %}
+        <div class="divider">/</div>
+        <span class="post-meta">Updated on {{ page.last_modified_at | date: "%B %-d, %Y" }}</span>
+        {% endif %}
+      </div>
 		  {% endif %}
         </div>
       </div>
@@ -60,8 +66,14 @@
 			{% endif %}
 		  {% endif %}
 		  
-		  {% if include.type == "post" %}
-		  <span class="post-meta">Posted on {{ page.date | date: "%B %-d, %Y" }}</span>
+      {% if include.type == "post" %}
+      <div class="posted-updated-date-container">
+        <span class="post-meta">Posted on {{ page.date | date: "%B %-d, %Y" }}</span>
+        {% if page.last_modified_at %}
+        <div class="divider">/</div>
+        <span class="post-meta">Updated on {{ page.last_modified_at | date: "%B %-d, %Y" }}</span>
+        {% endif %}
+      </div>
 		  {% endif %}
         </div>
       </div>
